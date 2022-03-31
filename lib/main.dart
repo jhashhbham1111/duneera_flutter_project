@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'View/alternateday.dart';
+import 'View/bakery-&-dairy.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         // primarySwatch: Colors.blue,
         primaryColor: Color(0xff1e45aa),
       ),
-      home: const AlternateDay(),
+      home: const BakeryAndDiary(),
     );
   }
 }

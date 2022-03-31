@@ -73,11 +73,11 @@ class _BakeryAndDiaryState extends State<BakeryAndDiary> {
 
                   ],
                 ),
+              /*  const BakeryDiaryCard(),
                 const BakeryDiaryCard(),
                 const BakeryDiaryCard(),
                 const BakeryDiaryCard(),
-                const BakeryDiaryCard(),
-                const BakeryDiaryCard(),
+                const BakeryDiaryCard(),*/
 
               ],
             ),
@@ -121,9 +121,10 @@ class DiaryProduct extends StatelessWidget {
 }
 
 class BakeryDiaryCard extends StatelessWidget {
-  const BakeryDiaryCard({
-    Key? key,
-  }) : super(key: key);
+  final String title;
+
+
+  BakeryDiaryCard({required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -136,17 +137,15 @@ class BakeryDiaryCard extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              leading: Container(
-                child: const Image(
-                  image: NetworkImage(
-                      "https://cdn.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.webp"),
-                ),
+              leading: const Image(
+                image: NetworkImage(
+                    "https://cdn.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.webp"),
               ),
-              title: const Padding(
+              title:  Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Text(
-                  "BRITANNIA Cake-Fruity",
-                  style: TextStyle(
+                  title,
+                  style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 18),

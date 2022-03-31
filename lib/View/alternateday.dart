@@ -56,8 +56,8 @@ class _AlternateDayState extends State<AlternateDay> {
         children: [
           Expanded(
             child: ListView(
-              children: [
-                const ItemCard(
+              children: const [
+                ItemCard(
                   image: "cake",
                   description:
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis aliquet dui, eu varius augue elementum sit amet. Sed dolor enim,",

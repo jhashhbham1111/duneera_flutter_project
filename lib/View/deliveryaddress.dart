@@ -91,7 +91,7 @@ class _DeliveryAddressState extends State<DeliveryAddress> {
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
-                      hintText: " Name",
+                      hintText: "Flat No/House no/Building ",
                       hintStyle: const TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -141,7 +141,34 @@ class _DeliveryAddressState extends State<DeliveryAddress> {
                   )
 
               ),
+              Container(
+                  margin: EdgeInsets.only(left:10,right: 10,top: 20),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      hintText: " Name",
+                      suffix: Text("Change",style:TextStyle(color: Colors.blue,fontSize: 16,fontWeight:FontWeight.normal),),
+                      hintStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: const BorderSide(color: Colors.grey, width: 4),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.grey, width: 1.5),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: Colors.grey, width: 1.5),
+                      ),
+                    ),
+                  )
 
+              ),
             ],
           )
         ],
