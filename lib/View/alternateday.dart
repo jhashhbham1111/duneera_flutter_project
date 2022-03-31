@@ -1,5 +1,7 @@
+import 'package:duneera_flutter_project/Widget/item_card.dart';
+import 'package:duneera_flutter_project/Widget/week_day_box.dart';
 import 'package:flutter/material.dart';
-import 'package:dotted_border/dotted_border.dart';
+
 class AlternateDay extends StatefulWidget {
   const AlternateDay({Key? key}) : super(key: key);
 
@@ -8,149 +10,103 @@ class AlternateDay extends StatefulWidget {
 }
 
 class _AlternateDayState extends State<AlternateDay> {
+  List<String> days = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         actions: [
-          Container(
-            margin: EdgeInsets.only( right: 20),
-            width:150,
-            height: 50,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.lightBlueAccent),
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.blue,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: 8,
             ),
-            child: const Text(
-              'CUSTOM',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
-            ),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child:
-          Column(
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 20),
-                child: ListTile(
-                  leading: const Image(
-                    image: NetworkImage(
-                        "https://cdn.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.webp"),
-                  ),
-                  title: const Text(
-                    "BRITANNIA Cake-Fruity",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                  subtitle: Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(right: 210),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: const [
-                            Text(
-                              '130g',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '\u{20B9}${27.00}',
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis aliquet dui, eu varius augue elementum sit amet. Sed dolor enim,',
-                        style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
+            child: MaterialButton(
+              elevation: 0,
+              onPressed: () {
+                //on press of custom button
+              },
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children:  [
-              Container(
-
-                margin:EdgeInsets.only(left: 50,top:50),
-                child: const Text(
-                  "Selected days",
+              color: const Color(0xff1e45aa),
+              child: const Text('Custom',
                   style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 27),
-                ),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  rectBorderWidget,
-                  rectBorderWidget,
-                  rectBorderWidget,
-                  rectBorderWidget,
-
-                ],
-              )
-
-            ],
-
-
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
+            ),
           )
         ],
       ),
-    );
-
-  }
-  Widget get rectBorderWidget {
-    return Container(
-      margin: EdgeInsets.only(top: 50,left: 50),
-      child: DottedBorder(
-        dashPattern: [8, 4],
-        strokeWidth: 1,
-        child: Row(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              child: const Text(
-                "SU",
-                style: TextStyle(
-                    color: Colors.blue, fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              height: 40,
-              width: 40,
-              color: Colors.white,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: ListView(
+              children: [
+                const ItemCard(
+                  image: "cake",
+                  description:
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis aliquet dui, eu varius augue elementum sit amet. Sed dolor enim,",
+                  title: "BRITANIA Cake-Fruity",
+                  weight: "130g",
+                  price: "27.00",
+                )
+              ],
             ),
-
-
-          ],
-        ),
+          ),
+          Expanded(
+            child: Container(
+              color: Color(0xffe8f3f9),
+              margin: const EdgeInsets.symmetric(
+                horizontal: 5,
+                vertical: 10,
+              ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 20,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Selected days",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Wrap(
+                    children: [
+                      for (String day in days)
+                        WeekDayBox(
+                          day,
+                        ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
